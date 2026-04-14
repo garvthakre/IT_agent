@@ -1,0 +1,7 @@
+browser-use==0.1.40
+playwright
+python-dotenv>=1.0.0
+
+# ── AI Providers — install both, use whichever you set in .env ──
+langchain-groq>=0.2.0
+langchain-anthropic>=0.3.0
