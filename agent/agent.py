@@ -64,7 +64,7 @@ validate_env()
 
 # ── Imports (after env check) ─────────────────────────────────────────────────
 
-from browser_use import Agent, BrowserConfig
+from browser_use import Agent, Browser, BrowserConfig
 
 # ── LLM factory (same pattern as Nexus planner.ts) ───────────────────────────
 
@@ -139,13 +139,16 @@ async def run_it_task(task: str) -> str:
     print(f"{'='*60}\n")
 
     llm = get_llm()
-
+    browser = Browser(
+    config=BrowserConfig(
+        headless=False,
+    )
+)
     agent = Agent(
         task=f"{SYSTEM_PROMPT}\n\nIT TASK TO COMPLETE:\n{task}",
         llm=llm,
-        browser_config=BrowserConfig(
-            headless=False,   # show browser window for demo/Loom recording
-        ),
+        browser=browser,
+        use_vision=False,
         max_failures=3,
         retry_delay=2,
     )
