@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Create User — IT Admin Panel{% endblock %}
+
+{% block content %}
+<h1>Create New User</h1>
+
+<div class="card" style="max-width:480px;">
+    <form method="POST" action="/create-user">
+
+        <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="e.g. Jane Doe" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="e.g. jane@company.com" required>
+        </div>
+
+        <div class="form-group">
+            <label for="role">Role</label>
+            <select id="role" name="role">
+                <option value="employee">Employee</option>
+                <option value="admin">Admin</option>
+                <option value="viewer">Viewer</option>
+            </select>
+        </div>
+
+        <div style="display:flex; gap:10px; margin-top:8px;">
+            <button type="submit" class="btn btn-primary">Create User</button>
+            <a href="/users" class="btn btn-secondary">Cancel</a>
+        </div>
+
+    </form>
+</div>
+
+<div class="card" style="max-width:480px; background:#fff8e1; border-color:#ffc107;">
+    <h2 style="color:#f57f17;">Note</h2>
+    <p style="color:#555; margin-top:8px; font-size:13px;">
+        A temporary password will be automatically generated and shown after creation.
+        The user must change it on first login.
+    </p>
+</div>
+{% endblock %}

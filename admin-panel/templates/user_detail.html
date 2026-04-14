@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}{{ user.name }} — IT Admin Panel{% endblock %}
+
+{% block content %}
+<h1>User Detail</h1>
+
+<div class="card" style="max-width:560px;">
+    <h2>{{ user.name }}</h2>
+    <table class="detail-table" style="margin: 16px 0;">
+        <tr><td>Email</td><td>{{ user.email }}</td></tr>
+        <tr><td>Role</td><td><span class="badge badge-{{ user.role }}">{{ user.role }}</span></td></tr>
+        <tr><td>Status</td><td><span class="badge badge-{{ user.status }}">{{ user.status }}</span></td></tr>
+        <tr><td>Created</td><td>{{ user.created_at[:10] }}</td></tr>
+        <tr><td>Temp Password</td><td style="font-family:monospace;">{{ user.password }}</td></tr>
+    </table>
+
+    <div class="actions">
+        <a href="/reset-password/{{ user.id }}" class="btn btn-warning">Reset Password</a>
+
+        <form method="POST" action="/toggle-status/{{ user.id }}" style="display:inline;">
+            {% if user.status == 'active' %}
+            <button type="submit" class="btn btn-danger">Disable Account</button>
+            {% else %}
+            <button type="submit" class="btn btn-success">Enable Account</button>
+            {% endif %}
+        </form>
+
+        <form method="POST" action="/delete-user/{{ user.id }}" style="display:inline;"
+              onsubmit="return confirm('Delete {{ user.name }}? This cannot be undone.');">
+            <button type="submit" class="btn btn-secondary">Delete User</button>
+        </form>
+    </div>
+</div>
+
+<a href="/users" style="color:#1a1a2e; font-size:13px;">← Back to Users</a>
+{% endblock %}

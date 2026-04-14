@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Reset Password — IT Admin Panel{% endblock %}
+
+{% block content %}
+<h1>Reset Password</h1>
+
+<div class="card" style="max-width:480px;">
+    <h2>Confirm Password Reset</h2>
+    <p style="margin: 12px 0; color:#444;">
+        You are about to reset the password for:
+    </p>
+    <table class="detail-table" style="margin-bottom:16px;">
+        <tr><td>Name</td><td>{{ user.name }}</td></tr>
+        <tr><td>Email</td><td>{{ user.email }}</td></tr>
+        <tr><td>Role</td><td>{{ user.role }}</td></tr>
+        <tr><td>Status</td><td>{{ user.status }}</td></tr>
+    </table>
+    <p style="color:#666; font-size:13px; margin-bottom:16px;">
+        A new temporary password will be generated. The old password will stop working immediately.
+    </p>
+    <form method="POST" action="/reset-password/{{ user.id }}">
+        <div style="display:flex; gap:10px;">
+            <button type="submit" class="btn btn-warning">Yes, Reset Password</button>
+            <a href="/users" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
