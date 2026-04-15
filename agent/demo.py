@@ -58,7 +58,10 @@ async def run_demo():
         print(f"     {demo['description']}")
 
         if i > 0:
-            input("\nPress ENTER to run this task (or Ctrl+C to stop)... ")
+            try:
+                input("\nPress ENTER to run this task (or Ctrl+C to stop)... ")
+            except EOFError:
+                pass
 
         await run_it_task(demo["task"])
 
