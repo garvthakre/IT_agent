@@ -26,13 +26,13 @@ DEMO_TASKS = [
     },
     {
         "title": "Task 2 — Create New User",
-        "task": "Create a new employee account. Full name: Alex Turner, email: alex@company.com, role: employee",
+        "task": "Create a new employee account. Full name: garv Thakre, email: garvthakre@gmail.com, role: employee",
         "description": "Fills out the create user form and submits it",
     },
     {
         "title": "Task 3 — Disable Account",
-        "task": "Disable the account for emily@company.com",
-        "description": "Finds Emily Davis and disables her account",
+        "task": "Disable the account for garvthakre@gmail.com",
+        "description": "Finds garv Thakre and disables his account",
     },
     {
         "title": "Task 4 — Conditional (Bonus)",
